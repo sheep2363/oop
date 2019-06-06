@@ -62,7 +62,7 @@ var GameMap = function(){
 			this.pic[25] = new Framework.Sprite(define.imagePath + '2-14.png');//鐵球
 			this.pic[26] = new Framework.Sprite(define.imagePath + '2-15.png');//寶劍
 			this.pic[27] = new Framework.Sprite(define.imagePath + '2-16.png');//鐵鍬
-			this.pics = new Framework.Sprite(define.imagePath + 'blue.png');//
+			//this.pics = new Framework.Sprite(define.imagePath + 'blue.png');//
 			this.sit = [0,0,1,0,0,0,0,1,1,0,0,1,0,0
 						,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0];
 		
@@ -102,21 +102,13 @@ var GameMap = function(){
 		var end = this.levelx[this.level] + parseInt((this.level == 0)?0:this.levelx[1]);
 		console.log("start:" + start + " end:" + end);
         console.log(this.level);
-        if(this.v == 1){
-             console.log("vvvvv");
+        /*if(this.v == 1){
             this.visible = [0,0,0,0,0,0,0,0,0,0,0,0,0,0
 							,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-            var endPosition = {
-                x: this.endposit.x + 350 * 2,
-                y: this.endposit.y 
-            };
-            this.pics.position = endPosition;
-            
-            this.pics.draw(ctx);
            
         }
         else
-        {
+        {*/
             for(i =start ; i < end ; i++)
             {
                 if(this.tempi != -1){
@@ -157,11 +149,18 @@ var GameMap = function(){
                         this.pic[i].draw(ctx);
                     }
                 }
-            }
+           // }
         }
         
 		
         
+	};
+	this.v = function(){
+		//if(this.v == 1){
+            this.visible = [0,0,0,0,0,0,0,0,0,0,0,0,0,0
+							,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+           
+        console.log("visible=0");
 	};
 	this.isInside = function(x, y){
 		var start = parseInt((this.level == 0)?0:this.levelx[0]);

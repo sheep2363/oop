@@ -243,7 +243,9 @@ var MyGame = Framework.Class(Framework.Level , {
 	
     mouseup: function(e) {
         drag = false;
-		
+		console.log("mouseup  drag = "+drag);
+		this.gameMap.tempi = -1;
+		//e.preventDefault();
     },
 
     mousedown: function(e) {
@@ -254,7 +256,7 @@ var MyGame = Framework.Class(Framework.Level , {
         drag = true;
     },
 
-    mousemove: function(e) {        
+    mousemove: function(e) {
 	  if(drag)
 	  {
 		 console.log(this.gameMap.isInside(e.x,e.y));
@@ -264,7 +266,8 @@ var MyGame = Framework.Class(Framework.Level , {
 	  }
 	},
 	
-    click: function (e) {  
+    click: function (e) {
+		console.log("click  drag = " + drag);
 		if(e){
 		let x = e.x;
 		let y = e.y;
@@ -404,14 +407,30 @@ var MyGame = Framework.Class(Framework.Level , {
             else if(this.textbox.nowpic == 27)
 			{
                 console.log("27-");
-                this.gameMap.v =1;
-                    
-                this.background.success =1;
+				
+                this.gameMap.draw();
+				
+				level = 0;
+				this.gameMap.level = 0;
+                this.background.level = 0;
                 this.background.draw();
+                this.gameMap.newone(level);
+               
+				this.gameMap.tempi = -1;
+                //this.textbox.level = 1;
                 
-              // this.about = new About();
-              // this.about.load();
-              this.gameMap.draw();
+                this.textbox.draw();
+				this.gameMap.draw();
+                this.answer.re = 1;
+                this.answer.draw();
+				
+				this.gameMap.v();
+			
+				console.log("v=0 and draw");
+				this.gameMap.update();
+				console.log(this.gameMap.isInside(x,y) + " " +this.gameMap.visible[this.gameMap.isInside(x,y)]);
+				this.background.success = 1;
+				this.background.draw();
 			}
 			//console.log(this.gameMap.visible);
         }
