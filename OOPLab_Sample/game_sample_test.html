@@ -1,0 +1,56 @@
+<html>
+<head>
+<script src="./test/qunit-1.15.0.js"></script>
+<script src="game_sample/lib/blanket.min.js"></script>
+<script src="game_sample/lib/mysrc/jquery-3.2.1.min.js"></script>
+<script src="game_sample/lib/mysrc/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<script type="text/javascript">
+//陣列和載入JS檔的順序相同, lookFor為在要載入的檔案中, 
+//有用到的全域變數, importJS這個function, 會在找到lookFor的變數後
+//才會繼續loading下一個檔案, 如果沒有需要lookFor, 則以空字串代表
+var _id = 'Test';
+var _isConnectWebSocket = false;  // 2015.12.02 , true -> false
+var _isTestMode = true;
+var _isRecordMode = false;
+
+
+var listScript = 
+[
+    { src: 'game_sample/lib/loadFramework.js', lookFor: 'loadFrameworkEnd'},
+    { src: 'game_sample/js/loadGame.js', lookFor: 'loadGameEnd'},
+    { src: 'test/test.js'},
+	{ src: 'game_sample/lib/FancyWebSocket.js'},
+	{ src: 'game_sample/lib/SendWebSocket.js'},
+];
+
+</script>
+
+<script type="text/javascript" src="game_sample/lib/testLoad.js"></script>
+<!---->
+<script src="./test/qunit-1.15.0.js"></script>
+	
+<style type="text/css">
+        /* DOM之間不要留空間 */
+        *{
+            padding:0;
+            margin:0;
+        }
+</style>
+<title>想不到吧</title>
+</head>
+<body>
+<div id="main" style="position: relative; float:left; width:30%;">
+	<link rel="stylesheet" href="./test/qunit-1.15.0.css">
+	<div id="qunit"></div>
+	<div id="qunit-fixture"></div>
+</div>
+<div class="textbox">
+        我是個魯蛇,沒錢沒房沒車也沒女友,但我老婆活在我的心中^w^,<br>
+        為了湊到傳說中的老婆們,我參加了手遊公司舉辦的活動,他將我們帶到了神秘小島,<br>
+        導遊在離開前告訴我們,目前沒人能成功逃出來(怕爆QQ),<br>
+        有人能逃出塔就能直接得到手游公司的獎賞  \全部角色/  <br>
+        (身為全婆族我當然不會放棄這個好機會><)<br>
+        最後他將我們蒙面並帶到不同的塔裡面<br>
+</div>
+</body>
+</html>

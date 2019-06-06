@@ -1,0 +1,76 @@
+@charset "utf-8";
+/* CSS Document */
+.nouns{
+	color:#FFF;
+	border:solid #930;
+	background-color:#C60;
+	margin:0px auto;
+	text-align:center;
+	width:65px;
+	height:37px;
+	display:block;
+	font-size:18px;
+	font-family:"華康兒風體W3(P)";
+	font-weight:bold;
+}
+.verb{
+	color:#FFF;
+	border:solid #930;
+	background-color:#00C;
+	margin:0px auto;
+	text-align:center;
+	width:65px;
+	height:37px;
+	display:block;
+	font-size:20px;
+	font-family:"華康兒風體W3(P)";
+	font-weight:bold;
+}
+.select{
+	position: relative;
+	margin-top: -597px;
+	margin-right: 3px;
+	float:right;
+}
+.screen{
+	width:800px;
+	height:400px;
+	background-color:#000;
+	padding-bottom: 200px;
+}
+.body{
+	width:800px;
+	height:600px;
+}
+.textbox{
+	border:solid #F60;
+	width:720px;
+	height:200px;
+	background-color:#CCC;
+	float:left;
+	position: relative;
+	margin-top: -210px;
+	font-size:25px;
+	font-family:"華康兒風體W3(P)";
+	font-weight:bold;
+}
+.nouns1,.nouns2{
+	border:solid #C60;
+	float:left;
+	width:60px;
+	height:45px;
+	margin:40px;
+}
+.verb1{
+	border:solid #00C;
+	width:60px;
+	height:45px;
+	float:left;
+	margin:40px;
+}
+.ans{
+	position: relative;
+	margin-top: -320px;
+	margin-left: 125px;
+	float:left;
+}

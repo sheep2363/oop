@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>想不到吧</title>
+<link href="style.css" rel="stylesheet" /> 
+<script src="jquery-3.2.1.min.js"></script>
+<script src="jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<script language="javascript">
+//code
+var array = [
+  {nouns1:'我',verb1:'檢視' ,nouns2:'密室',text:'昏暗的燈光,使我多少能看點東西,這時我發現四周都是牆壁,不遠處有骷髏堆以及石堆,還有一道上鎖的鐵門,看來我需要找到鑰匙才能出去',new:''},
+  {nouns1:'我',verb1:'移動到' ,nouns2:'門',text:''},
+  {nouns1:'我',verb1:'移動到' ,nouns2:'石堆',text:'我往石堆的方向走過去'},
+  {nouns1:'我',verb1:'移動到' ,nouns2:'骷髏堆',text:'我往骷髏堆的方向過去'},
+  {nouns1:'我',verb1:'移動到' ,nouns2:'牆壁',text:'我往牆壁的方向過去'},
+  {nouns1:'我',verb1:'檢視' ,nouns2:'門',text:'門上有鑰匙孔,我需要鑰匙才能打開'},
+  {nouns1:'我',verb1:'檢視' ,nouns2:'石堆',text:'我發現有許多大小不一的石頭'},
+  {nouns1:'我',verb1:'檢視' ,nouns2:'骷髏堆',text:'我發現好多不同形狀的骨頭,我分不清是人的還是動物的(怕QQ'},
+  {nouns1:'我',verb1:'檢視' ,nouns2:'牆壁',text:'牆壁凹凸不平的,好像有東西在裡面'},
+  {nouns1:'石頭',verb1:'組合' ,nouns2:'骨頭',text:'我將它們組合成了一把錐子'},
+  {nouns1:'骨頭',verb1:'組合' ,nouns2:'石頭',text:'我將它們組合成了一把錐子'},
+  {nouns1:'錐子',verb1:'開啟' ,nouns2:'牆壁',text:'我用錐子把鬆動的牆壁鑿出一個洞,發現裡面有一把鑰匙!'},
+  {nouns1:'鑰匙',verb1:'開啟' ,nouns2:'門',text:'我用鑰匙把門打開了!!'},  
+];
+function check(){
+	if($(".nouns1").text() != ""){
+		if($(".verb1").text() != ""){
+			if($(".nouns2").text() != ""){
+				return 1;
+			}
+		}
+	}
+	return 0;
+}
+
+function checkans(){
+	for(i = 0; i < array.length;i++){
+		if($(".nouns1").text() == array[i].nouns1){
+			if($(".verb1").text() == array[i].verb1){
+				if($(".nouns2").text() == array[i].nouns2){
+					return JSON.stringify(array[i]);
+				}
+			}
+		}
+	}
+	return 0;
+}
+$(document).ready(function(e) {
+});
+var drag;
+$(function() {
+	
+    $(".option").draggable({ revert: true });
+	$(".ans1").droppable({
+		drop:function(e,u)
+		{
+			drag = u.draggable;
+			if(drag.hasClass("verb")&& $(this).hasClass("verb1") ){
+				$(this).text(drag.text());
+				$(this).css("background-color","#FFF");	
+			}
+			else if(drag.hasClass("nouns") && ($(this).hasClass("nouns1") || $(this).hasClass("nouns2")) ){
+				$(this).text(drag.text());
+				$(this).css("background-color","#FFF");	
+			}
+			if(check() == 1){
+				var x = JSON.parse(checkans());
+				$(".textbox").text(x.text);
+			}
+		}
+	});
+});
+</script>
+</head>
+
+<body>
+<div class="main">
+	<div class="screen">
+    </div>
+    <div class="body">
+	    <div class="ans">
+        	<div class="ans1 nouns1"></div>
+        	<div class="ans1 verb1"></div>
+        	<div class="ans1 nouns2"></div>                        
+        </div>
+        <div class="textbox">
+                我是個魯蛇,沒錢沒房沒車也沒女友,但我老婆活在我的心中^w^,<br>
+                為了湊到傳說中的老婆們,我參加了手遊公司舉辦的活動,他將我們帶到了神秘小島,<br>
+                導遊在離開前告訴我們,目前沒人能成功逃出來(怕爆QQ),<br>
+                有人能逃出塔就能直接得到手游公司的獎賞  \全部角色/  <br>
+				(身為全婆族我當然不會放棄這個好機會><)<br>
+                最後他將我們蒙面並帶到不同的塔裡面<br>
+        </div>
+        <div class="select">				
+             <div class="option nouns">我</div>
+             <div class="option verb">檢視</div>
+             <div class="option nouns">密室</div>
+             <div class="option nouns">骷髏堆</div>
+             <div class="option nouns">石堆</div>
+             <div class="option nouns">牆壁</div>
+             <div class="option nouns">門</div>
+             <div class="option verb">開啟</div>
+             <div class="option verb">移動到</div>
+             <div class="option nouns">骨頭</div>
+             <div class="option nouns">石頭</div>
+             <div class="option verb">組合</div>
+             <div class="option nouns">錐子</div>
+             <div class="option nouns">鑰匙</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
