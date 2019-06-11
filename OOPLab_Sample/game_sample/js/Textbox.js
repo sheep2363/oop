@@ -10,7 +10,7 @@ var Textbox = function(){
 	this.map = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27];
 	this.pic = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 	this.nowpic = -1;
-	this.load = function(){
+	this.load = function(){//load pic
 		this.pic[0] = new Framework.Sprite(define.imagePath + 'bottom.png');
 		this.pic[1] = new Framework.Sprite(define.imagePath + 'bottom1.png');
 		this.pic[2] = new Framework.Sprite(define.imagePath + 'bottom2.png');
@@ -45,16 +45,16 @@ var Textbox = function(){
 	this.update = function(){
 		this.draw();
 	};
-    this.newone=function(a1)
+    this.newone = function(a1)
     {
-        if(a1 == 0)
+        if(a1 == 0)//換關卡重新載入圖片
         {
             this.pic[1].position = this.position;
 			this.pic[1].draw(ctx);
         }
      
     }
-	this.draw = function(ctx){
+	this.draw = function(ctx){//畫出特定圖片
 		if(this.nowpic == 27){}
         else if(this.nowpic != -1){
 			console.log(this.nowpic);
@@ -76,7 +76,8 @@ var Textbox = function(){
 			
 		}
 	};
-    this.ans = [
+    this.ans = [ //储存答案的陣列
+	  //level1
       {n1:0,v1:2 ,n2:1,bot:2},
       {n1:0,v1:8 ,n2:6,bot:3},
       {n1:0,v1:8 ,n2:4,bot:4},
@@ -90,22 +91,16 @@ var Textbox = function(){
       {n1:9,v1:11 ,n2:10,bot:11},
       {n1:12,v1:7 ,n2:5,bot:12},
       {n1:13,v1:7 ,n2:6,bot:13},
-      
+      //level2
       {n1:14,v1:15 ,n2:17,bot:15},
-      
       {n1:14,v1:15 ,n2:18,bot:17},
-	  
       {n1:14,v1:16,n2:19,bot:19},
-      
       {n1:24,v1:16 ,n2:21,bot:21},
-   
       {n1:25,v1:16 ,n2:20,bot:23},
-    
       {n1:26,v1:16,n2:22,bot:25},
-
       {n1:27,v1:16 ,n2:23,bot:27}
     ];
-    this.redraw = function(temp){
+    this.redraw = function(temp){//檢查答案 並畫出該答案需要顯示的對話
         for(let i = 0;i<this.ans.length;i++){
             console.log(this.ans[i].n1);
             console.log(this.ans[i].v1);

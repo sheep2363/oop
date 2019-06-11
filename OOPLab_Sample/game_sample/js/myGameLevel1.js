@@ -39,7 +39,7 @@ var MyGame = Framework.Class(Framework.Level , {
         this.about.load();
         this.rootScene.attach(this.about);
 		*/
-		
+		//load所需物件
         this.background = new Background();
         this.background.load();
         this.rootScene.attach(this.background);
@@ -242,7 +242,7 @@ var MyGame = Framework.Class(Framework.Level , {
     },
 	
     mouseup: function(e) {
-        drag = false;
+        drag = false;//拖拉用
 		console.log("mouseup  drag = "+drag);
 		this.gameMap.tempi = -1;
 		//e.preventDefault();
@@ -253,11 +253,11 @@ var MyGame = Framework.Class(Framework.Level , {
         if (e) {
             console.log(e.x, e.y);
         }
-        drag = true;
+        drag = true;//拖拉用
     },
 
     mousemove: function(e) {
-	  if(drag)
+	  if(drag)//拖拉時去判斷是否在選項內,並讓選項跟著移動
 	  {
 		 console.log(this.gameMap.isInside(e.x,e.y));
 		 if(this.gameMap.isInside(e.x,e.y) != -1){
@@ -273,7 +273,7 @@ var MyGame = Framework.Class(Framework.Level , {
 		let y = e.y;
 		//1
 	    console.log(1);
-		if(this.gameMap.isInside(x,y) != -1){
+		if(this.gameMap.isInside(x,y) != -1){//讀取現在移動的選項並傳送到answer
             this.answer.temp = this.gameMap.isInside(x,y);
         }
 		else{
@@ -283,7 +283,7 @@ var MyGame = Framework.Class(Framework.Level , {
         //console.log(this.gameMap.sit[this.answer.temp]);
 		//2
 		console.log(2);
-		if(this.answer.isInside(x,y) != -1){
+		if(this.answer.isInside(x,y) != -1){//判斷選項及答案的格子是否有碰在一起
 			//3
 			console.log(3);
             console.log(this.textbox.nowpic);
@@ -302,7 +302,7 @@ var MyGame = Framework.Class(Framework.Level , {
 		}
          console.log(46);
         
-        if(x < 180 && x + 30 > 100 && y < 536 && y+30 > 500)
+        if(x < 180 && x + 30 > 100 && y < 536 && y+30 > 500)//返回鍵
         {
             this.background.back = 1;
             console.log("return");
@@ -313,11 +313,11 @@ var MyGame = Framework.Class(Framework.Level , {
             }
             
         }
-        if(check == 1){
-            this.textbox.redraw(this.answer.checkans);
+        if(check == 1){//如果三個答案格子內都有選項了
+            this.textbox.redraw(this.answer.checkans);//檢查答案
 			console.log(e.x  + " " + e.y);
 			console.log("nowpic: "+this.textbox.nowpic);
-			if(this.textbox.nowpic == 2){
+			if(this.textbox.nowpic == 2){//有答對的就換劇情及顯示新選項
                 
 				this.gameMap.visible[3] =1;
 				this.gameMap.visible[4] =1;
@@ -350,7 +350,7 @@ var MyGame = Framework.Class(Framework.Level , {
 				this.gameMap.visible[13] =1;
 				this.gameMap.draw();
 			}
-			else if(this.textbox.nowpic == 13)
+			else if(this.textbox.nowpic == 13)//破第一關時換關卡
 			{
                 this.gameMap.picsvisible =1;
               
@@ -404,7 +404,7 @@ var MyGame = Framework.Class(Framework.Level , {
                
 				this.gameMap.draw();
 			}
-            else if(this.textbox.nowpic == 27)
+            else if(this.textbox.nowpic == 27)//結束時顯示成功畫面及關於我們的資訊
 			{
                 console.log("27-");
 				

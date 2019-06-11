@@ -23,13 +23,13 @@ var GameMap = function(){
 		x:1500,
 		y:30
 	};
-	this.load = function(){
+	this.load = function(){//load pic
 			this.map = [0,1,2,3,4,5,6,7,8,9,10,11,12,13
 						,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
 			this.pic = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 			
             this.visible = [1,1,1,0,0,0,0,0,0,0,0,0,0,0
-							,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+							,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];//顯示與否
 			
 			this.pic[0] = new Framework.Sprite(define.imagePath + '1.png');//我
 			this.pic[1] = new Framework.Sprite(define.imagePath + '2.png');//密室
@@ -74,7 +74,7 @@ var GameMap = function(){
 			this.pic[this.tempi].draw();
 		}
 	};
-	this.move = function(newX, newY,a){
+	this.move = function(newX, newY,a){ //讓選項跟著滑鼠一起移動
 		
 		var PicPosition = {
 			x: newX,
@@ -87,7 +87,7 @@ var GameMap = function(){
 		this.tempi = a;
 		this.pic[this.tempi].update();
 	}
-    this.newone = function(a1)
+    this.newone = function(a1) //更新關卡
     {
         if(a1 != 0){
 			console.log(this.level);
@@ -98,7 +98,7 @@ var GameMap = function(){
     }
 	this.draw = function(ctx){
        
-		var start = parseInt((this.level == 0)?0:this.levelx[0]);
+		var start = parseInt((this.level == 0)?0:this.levelx[0]);//關卡1時顯示關卡1的選項,關卡2時顯示關卡2的
 		var end = this.levelx[this.level] + parseInt((this.level == 0)?0:this.levelx[1]);
 		console.log("start:" + start + " end:" + end);
         console.log(this.level);
@@ -111,7 +111,7 @@ var GameMap = function(){
         {*/
             for(i =start ; i < end ; i++)
             {
-                if(this.tempi != -1){
+                if(this.tempi != -1){//如果有在移動的選項
                     if(i == this.tempi){
                         var PicPosition = {
                         x: this.position.x,
@@ -124,7 +124,7 @@ var GameMap = function(){
                             this.pic[i].draw(ctx);
                         }
                     }
-                    else{
+                    else{//其餘的選項
                         var PicPosition = {
                         x: this.pos.x,
                         y: this.pos.y + 60 * (i - parseInt((this.level == 0)?0:this.levelx[1]))
@@ -137,7 +137,7 @@ var GameMap = function(){
                         }
                     }
                 }
-                else{
+                else{//沒有任何在移動的選項
                     var PicPosition = {
                         x: this.pos.x,
                         y: this.pos.y + 60 * (i - parseInt((this.level == 0)?0:this.levelx[1]))
@@ -155,14 +155,14 @@ var GameMap = function(){
 		
         
 	};
-	this.v = function(){
+	this.v = function(){//test function
 		//if(this.v == 1){
             this.visible = [0,0,0,0,0,0,0,0,0,0,0,0,0,0
 							,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
            
         console.log("visible=0");
 	};
-	this.isInside = function(x, y){
+	this.isInside = function(x, y){//判斷滑鼠是否在選項內
 		var start = parseInt((this.level == 0)?0:this.levelx[0]);
 		var end = this.levelx[this.level] + parseInt((this.level == 0)?0:this.levelx[1]);
 		console.log(x + " " +y);

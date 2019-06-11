@@ -13,7 +13,7 @@ var Answer = function(){
 	};
 	this.map = [0,0,0];
 	this.pic = [0,0,0];
-	this.load = function(){
+	this.load = function(){//load pic
 		this.pic[0] = new Framework.Sprite(define.imagePath + 'nouns.png');
 		this.pic[1] = new Framework.Sprite(define.imagePath + 'verb.png');
 		this.pic[2] = new Framework.Sprite(define.imagePath + 'nouns2.png');
@@ -24,13 +24,13 @@ var Answer = function(){
 	};
     this.temp = -1;
 	this.draw = function(ctx){
-        if(this.re == 1){
+        if(this.re == 1){//如果有換關,重新載入圖片
             this.pic[0] = new Framework.Sprite(define.imagePath + 'nouns.png');
             this.pic[1] = new Framework.Sprite(define.imagePath + 'verb.png');
             this.pic[2] = new Framework.Sprite(define.imagePath + 'nouns2.png');
             this.re = 0; 
         }
-		for(i =0;i<3;i++)
+		for(i =0;i<3;i++)//畫圖
 		{
 			var PicPosition = {
 				x: this.pos.x + 350 * i,
@@ -42,7 +42,7 @@ var Answer = function(){
 			this.pic[i].draw(ctx);
 		}
 	};
-    this.isInside = function(x, y){
+    this.isInside = function(x, y){//判斷圖片是否在答案的格子內
 		for(i =0;i<3;i++)
 		{
 			console.log(i);
@@ -67,7 +67,7 @@ var Answer = function(){
 		return -1;
 	};
     this.checkans = [-1,-1,-1];
-    this.redraw = function(a,sit){
+    this.redraw = function(a,sit){//更改答案的圖片
         if(this.temp == 0 && (sit == 0)&& a!= 1)
         {
             this.pic[a] = new Framework.Sprite(define.imagePath + '1.png');

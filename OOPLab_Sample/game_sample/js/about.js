@@ -5,7 +5,7 @@ var About = function(){
 		x:350,
 		y:500
 	}
-    this.load = function()
+    this.load = function()//load pic
     {
         this.pic = new Framework.Sprite(define.imagePath + 'about.png');
     }
@@ -13,7 +13,7 @@ var About = function(){
 	};
     this.update = function(){
 	};
-	this.draw = function(ctx){
+	this.draw = function(ctx){//畫圖
         var PicPosition = {
 			x: this.pos.x,
 			y: this.pos.y 
